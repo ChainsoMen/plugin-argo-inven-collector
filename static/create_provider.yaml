@@ -1,0 +1,28 @@
+---
+provider: argo
+name: argo
+tags:
+  icon: https://github.com/argoproj/argo-cd/blob/master/ui/src/assets/images/argo.png?raw=true
+  label: Argo
+template:
+  service_account:
+    schema:
+      properties:
+        account_id:
+          title: Account Id
+          type: string
+      required:
+        - account_id
+      type: object
+capability:
+  supported_schema:
+    - argo_schema
+metadata:
+  view:
+    layouts:
+      help:service_account:create:
+        name: Creation Help
+        options:
+          markdown: |
+            ## Argo Provider
+            This provider collects data from Argo.

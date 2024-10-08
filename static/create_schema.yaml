@@ -1,0 +1,23 @@
+---
+name: argo_schema
+service_type: secret.credentials
+schema:
+  properties:
+    argo-username:
+      title: Username
+      type: string
+    argo-password:
+      title: Password
+      type: string
+    argo-server-url:
+      title: Server-Url
+      type: string
+  required:
+    - argo-username
+    - argo-password
+    - argo-server-url
+  type: object
+labels:
+  - Argo
+tags:
+  description: Argo credentials

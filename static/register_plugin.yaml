@@ -1,0 +1,17 @@
+---
+name: Argo Collector
+provider: argo
+service_type: inventory.Collector
+registry_config: { }
+registry_type: DOCKER_HUB
+image: chanjin/plugin-argo-inven-collector
+capability:
+  supported_schema:
+    - argo_schema
+tags:
+  description: argo collector
+  icon: https://github.com/argoproj/argo-cd/blob/master/ui/src/assets/images/argo.png?raw=true
+  long_description: Collects data from Argo
+labels:
+  - Argo
+template: { }

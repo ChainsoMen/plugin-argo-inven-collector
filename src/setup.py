@@ -32,7 +32,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         "spaceone-api",
-        "git+https://github.com/globocom/argocd-client.git",
+        #"git+https://github.com/globocom/argocd-client.git",
     ],
     package_data={
         "plugin": ["metadata/**/*.yaml"],

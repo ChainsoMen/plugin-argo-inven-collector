@@ -1,4 +1,4 @@
 spaceone-api
 pre-commit
 grpcio
-git+https://github.com/globocom/argocd-client.git
+#git+https://github.com/globocom/argocd-client.git

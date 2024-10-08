@@ -1,0 +1,41 @@
+search:
+  fields:
+    - 이름: data.metadata.name
+    - 네임스페이스: data.metadata.namespace
+    - UID: data.metadata.uid
+    - 생성 날짜: data.metadata.creationTimestamp
+table:
+  sort:
+    key: data.metadata.creationTimestamp
+    desc: true
+  fields:
+    - 이름: data.metadata.name
+    - 네임스페이스: data.metadata.namespace
+    - Sync 상태: data.status.sync.status
+    - Health 상태: data.status.health.status
+    - 생성 날짜: data.metadata.creationTimestamp
+    - 업데이트 날짜: data.status.reconciledAt
+    - 리포지토리 URL: data.spec.source.repoURL
+    - 대상 네임스페이스: data.spec.destination.namespace
+
+tabs.0:
+  name: Details
+  type: item
+  fields:
+    - 이름: data.metadata.name
+    - 네임스페이스: data.metadata.namespace
+    - 리포지토리 URL: data.spec.source.repoURL
+    - 타겟 리비전: data.spec.source.targetRevision
+    - 프로젝트: data.spec.project
+    - Sync 상태: data.status.sync.status
+    - Health 상태: data.status.health.status
+    - 생성 날짜: data.metadata.creationTimestamp
+tabs.1:
+  name: Resources
+  type: table
+  fields:
+    - 리소스 이름: name
+    - 종류: kind
+    - 네임스페이스: namespace
+    - 상태: status
+    - Health 상태: health.status
