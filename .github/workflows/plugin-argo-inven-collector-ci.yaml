@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: plugin-argo-inven-collector docker image CI
 
 on:
   pull_request:

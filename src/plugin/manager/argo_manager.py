@@ -57,12 +57,14 @@ class ArgoManager(BaseManager):
         applications = argo_connector.get_applications()
 
         for app in applications:
+            app_details = argo_connector.get_application_details(app['metadata']['name']) # 추가
             cloud_service = make_cloud_service_with_metadata(
                 name=app['metadata']['name'],
                 cloud_service_type=self.cloud_service_type,
                 cloud_service_group=self.cloud_service_group,
                 provider=self.provider,
-                data=app,
+                # data=app,
+                data={"application": app, "details": app_details},
                 data_format='dict',
                 metadata_path=self.metadata_path,
             )
