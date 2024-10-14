@@ -33,3 +33,22 @@ class ArgoConnector(BaseConnector):
         except Exception as e:
             _LOGGER.error(f"Error fetching applications from ArgoCD: {e}")
             return []
+
+    def get_application_details(self, app_name: str):
+        try:
+            app_details_url = f"{self.url}/api/v1/applications/{app_name}"
+            headers = {"Authorization": f"Bearer {self.token}"}
+            response = requests.get(app_details_url, headers=headers, verify=False)
+            response.raise_for_status()
+            details = response.json()
+            return {
+                "metadata": details['metadata'],
+                "spec": details['spec'],
+                "status": details['status'],
+                "operationState": details.get('status', {}).get('operationState', {}),
+                "conditions": details.get('status', {}).get('conditions', []),
+                "history": details.get('status', {}).get('history', [])
+            }
+        except Exception as e:
+            _LOGGER.error(f"Error fetching application details for {app_name} from ArgoCD: {e}")
+            return {}

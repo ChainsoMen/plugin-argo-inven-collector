@@ -1,41 +1,80 @@
 search:
   fields:
-    - 이름: data.metadata.name
-    - 네임스페이스: data.metadata.namespace
-    - UID: data.metadata.uid
-    - 생성 날짜: data.metadata.creationTimestamp
+    - 이름: data.application.metadata.name
+    - 네임스페이스: data.application.metadata.namespace
+    - UID: data.application.metadata.uid
+    - 생성 날짜: data.application.metadata.creationTimestamp
+    - 프로젝트: data.application.spec.project
+    - Sync 상태: data.application.status.sync.status
 table:
   sort:
-    key: data.metadata.creationTimestamp
+    key: data.application.metadata.creationTimestamp
     desc: true
   fields:
-    - 이름: data.metadata.name
-    - 네임스페이스: data.metadata.namespace
-    - Sync 상태: data.status.sync.status
-    - Health 상태: data.status.health.status
-    - 생성 날짜: data.metadata.creationTimestamp
-    - 업데이트 날짜: data.status.reconciledAt
-    - 리포지토리 URL: data.spec.source.repoURL
-    - 대상 네임스페이스: data.spec.destination.namespace
+    - 이름: data.application.metadata.name
+    - 네임스페이스: data.application.metadata.namespace
+    - 리포지토리 URL: data.application.spec.source.repoURL
+    - 타겟 리비전: data.application.spec.source.targetRevision
+    - 프로젝트: data.application.spec.project
+    - Sync 상태: data.application.status.sync.status
+    - Health 상태: data.application.status.health.status
+    - 생성 날짜: data.application.metadata.creationTimestamp
+    - 업데이트 날짜: data.application.status.reconciledAt
+    - 최종 동기화 시간: data.application.status.operationState.finishedAt
+    - 마지막 작업 상태: data.application.status.operationState.phase
+    - 마지막 작업 메시지: data.application.status.operationState.message
+    - 대상 네임스페이스: data.application.spec.destination.namespace
+    - 리비전: data.application.status.history.revision
+    - 작업 시간: data.application.status.history.deployedAt
+    - 배포 시작 시간: data.application.status.history.deployStartedAt
+    - 사용자: data.application.status.history.initiatedBy.username
+    - 리소스 이름: data.application.status.resources.name
+    - 종류: data.application.status.resources.kind
+    - 네임스페이스: data.application.status.resources.namespace
+    - 상태: data.application.status.resources.status
+    - Health 상태: data.application.status.resources.health.status
+    - 이미지: data.application.status.summary.images
+    - 시작 시간: data.application.status.operationState.startedAt
+    - 완료 시간: data.application.status.operationState.finishedAt
+    - 작업 메시지: data.application.status.operationState.message
 
 tabs.0:
   name: Details
   type: item
   fields:
-    - 이름: data.metadata.name
-    - 네임스페이스: data.metadata.namespace
-    - 리포지토리 URL: data.spec.source.repoURL
-    - 타겟 리비전: data.spec.source.targetRevision
-    - 프로젝트: data.spec.project
-    - Sync 상태: data.status.sync.status
-    - Health 상태: data.status.health.status
-    - 생성 날짜: data.metadata.creationTimestamp
+    - 이름: data.application.metadata.name
+    - 네임스페이스: data.application.metadata.namespace
+    - 리포지토리 URL: data.application.spec.source.repoURL
+    - 타겟 리비전: data.application.spec.source.targetRevision
+    - 프로젝트: data.application.spec.project
+    - Sync 상태: data.application.status.sync.status
+    - Health 상태: data.application.status.health.status
+    - 생성 날짜: data.application.metadata.creationTimestamp
+    - 최종 동기화 시간: data.application.status.operationState.finishedAt
+    - 마지막 작업 상태: data.application.status.operationState.phase
+    - 마지막 작업 메시지: data.application.status.operationState.message
+    - 이미지: data.application.status.summary.images
+    - 시작 시간: data.application.status.operationState.startedAt
+    - 완료 시간: data.application.status.operationState.finishedAt
+    - 작업 메시지: data.application.status.operationState.message
+
 tabs.1:
   name: Resources
   type: table
+  root_path: data.application.status.resources
   fields:
     - 리소스 이름: name
     - 종류: kind
     - 네임스페이스: namespace
     - 상태: status
     - Health 상태: health.status
+
+tabs.2:
+  name: History
+  type: table
+  root_path: data.application.status.history
+  fields:
+    - 리비전: revision
+    - 작업 시간: deployedAt
+    - 배포 시작 시간: deployStartedAt
+    - 사용자: initiatedBy.username
