@@ -22,6 +22,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          
+      # Read the version from src/VERSION and set it as an environment variable
+      - name: Read version from file
+        id: version
+        run: |
+          VERSION=$(cat src/VERSION)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4

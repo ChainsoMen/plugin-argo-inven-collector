@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: chanjin/plugin-argo-inven-collector
-  tag: latest
+  tag: 0.0.6
   pullPolicy: IfNotPresent
 
 service:

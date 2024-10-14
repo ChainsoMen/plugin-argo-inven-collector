@@ -26,11 +26,17 @@ table:
     - 대상 네임스페이스: data.application.spec.destination.namespace
     - 리비전: data.application.status.history.revision
     - 작업 시간: data.application.status.history.deployedAt
+    - 배포 시작 시간: data.application.status.history.deployStartedAt
+    - 사용자: data.application.status.history.initiatedBy.username
     - 리소스 이름: data.application.status.resources.name
     - 종류: data.application.status.resources.kind
     - 네임스페이스: data.application.status.resources.namespace
     - 상태: data.application.status.resources.status
     - Health 상태: data.application.status.resources.health.status
+    - 이미지: data.application.status.summary.images
+    - 시작 시간: data.application.status.operationState.startedAt
+    - 완료 시간: data.application.status.operationState.finishedAt
+    - 작업 메시지: data.application.status.operationState.message
 
 tabs.0:
   name: Details
@@ -47,6 +53,10 @@ tabs.0:
     - 최종 동기화 시간: data.application.status.operationState.finishedAt
     - 마지막 작업 상태: data.application.status.operationState.phase
     - 마지막 작업 메시지: data.application.status.operationState.message
+    - 이미지: data.application.status.summary.images
+    - 시작 시간: data.application.status.operationState.startedAt
+    - 완료 시간: data.application.status.operationState.finishedAt
+    - 작업 메시지: data.application.status.operationState.message
 
 tabs.1:
   name: Resources
@@ -66,3 +76,5 @@ tabs.2:
   fields:
     - 리비전: revision
     - 작업 시간: deployedAt
+    - 배포 시작 시간: deployStartedAt
+    - 사용자: initiatedBy.username
